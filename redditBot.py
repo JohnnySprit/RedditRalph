@@ -14,10 +14,15 @@ reddit = praw.Reddit(
 
 print(f"Authenticated as: {reddit.user.me()}")
 
-# Fetches and prints the top 10 posts from the subreddit r/mechmarket
-for post in reddit.subreddit("mechmarket").top(limit=10):
-    print(post.title)
-    print(post.url)
-    print(post.score)
-    print(post.num_comments)
-    print(post.author)
+subreddit_mechmarket = reddit.subreddit("mechmarket")
+# Fetches and prints the latest 25 posts from r/mechmarket
+for num, post in enumerate(subreddit_mechmarket.new(limit=25)):
+    print(f"{num+1}. {post.title}")
+    print(f"Author: {post.author}")
+    print(f"URL: {post.url}")
+    print(f"Upvotes: {post.ups}")
+    print(f"Downvotes: {post.downs}")
+    print(f"Total Votes: {post.score}")
+
+
+

@@ -1,8 +1,14 @@
 # RedditRalph
 
-A simple bot I made to fetch and print the latest posts from r/mechmarket using PRAW.
+A Reddit monitoring bot that continuously fetches and displays new posts from r/mechmarket. Perfect for keyboard enthusiasts who want to catch new listings as soon as they're posted, especially for great deals or rare boards that sell fast.
 
-I spend a lot of time the subreddit to see what keyboards people are selling. (Topre/HHKBs are my favorite)
+My reasoning for developing RedditRalph is because I was constantly refreshing r/mechmarket looking for new keyboards to buy. The good ones sell fast, and I was missing posts. This bot keeps an eye on the subreddit 24/7 so I don't have to.
+
+## What It Does
+
+- Monitors r/mechmarket for new posts
+- Runs continuously to catch listings
+- Displays post titles, authors, and direct links as they appear
 
 ## How to use
 

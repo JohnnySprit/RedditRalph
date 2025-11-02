@@ -1,10 +1,8 @@
 import praw
+import time
 from config import CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, USER_AGENT
 
-
-
-# Initializes Reddit instanc
-# Credentials from the config.py file that is in .gitignore
+# Initialize Reddit instance
 reddit = praw.Reddit(
     client_id=CLIENT_ID,
     client_secret=CLIENT_SECRET,
@@ -14,15 +12,18 @@ reddit = praw.Reddit(
 
 print(f"Authenticated as: {reddit.user.me()}")
 
-subreddit_mechmarket = reddit.subreddit("mechmarket")
-# Fetches and prints the latest 25 posts from r/mechmarket
-for num, post in enumerate(subreddit_mechmarket.new(limit=25)):
-    print(f"{num+1}. {post.title}")
-    print(f"Author: {post.author}")
-    print(f"URL: {post.url}")
-    print(f"Upvotes: {post.ups}")
-    print(f"Downvotes: {post.downs}")
-    print(f"Total Votes: {post.score}")
+# Target subreddit
+subreddit = reddit.subreddit("mechmarket")
 
+print(f"Listening for new posts on r/{subreddit}...\n")
 
-
+# Using streams to listen for new submissions in real time
+for submission in subreddit.stream.submissions(skip_existing=True):
+    print("="*80)
+    print(f"Title: {submission.title}")
+    print(f"Author: {submission.author}")
+    print(f"URL: {submission.url}")
+    print(f"Upvotes: {submission.ups}")
+    print(f"Score: {submission.score}")
+    print(f"Created at: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(submission.created_utc))}")
+    print("="*80)

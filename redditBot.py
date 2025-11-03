@@ -1,5 +1,6 @@
 import praw
 import time
+import winsound
 from config import CLIENT_ID, CLIENT_SECRET, REFRESH_TOKEN, USER_AGENT
 
 # Initialize Reddit instance
@@ -13,17 +14,20 @@ reddit = praw.Reddit(
 print(f"Authenticated as: {reddit.user.me()}")
 
 # Target subreddit
-subreddit = reddit.subreddit("mechmarket")
+subreddit = reddit.subreddit("mechmarket+hardwareswap")
 
 print(f"Listening for new posts on r/{subreddit}...\n")
 
 # Using streams to listen for new submissions in real time
 for submission in subreddit.stream.submissions(skip_existing=True):
-    print("="*80)
+    winsound.Beep(800, 500)
+    print("="*120)
     print(f"Title: {submission.title}")
     print(f"Author: {submission.author}")
     print(f"URL: {submission.url}")
     print(f"Upvotes: {submission.ups}")
     print(f"Score: {submission.score}")
     print(f"Created at: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(submission.created_utc))}")
-    print("="*80)
+    print("="*120)
+
+

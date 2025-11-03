@@ -52,4 +52,21 @@ My reasoning for developing RedditRalph is because I was constantly refreshing r
    python redditBot.py
    ```
 
+## Example usage
+   ```bash
+python redditBot.py
+Authenticated as: TheRalphBot
+Listening for new posts on r/mechmarket...
+
+================================================================================
+Title: [US-IN] [H] HHKB Pro 2, TGR Jane V2 [W] Paypal
+Author: RedditRalph
+URL: https://www.reddit.com/r/mechmarket/comments/...
+Upvotes: 1
+Score: 1
+Created at: 2025-11-02 16:10:36
+================================================================================
+```
+
+
 
